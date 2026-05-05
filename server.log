@@ -1,0 +1,104 @@
+nohup: ignoring input
+ERROR:__main__:MTCNN not found! Falling back to Haar Cascade (legacy).
+INFO:__main__:Starting DeepFake Detection App on port 10000
+INFO:__main__:Production mode: GPU disabled, CPU-only processing
+ * Serving Flask app 'server'
+ * Debug mode: off
+INFO:werkzeug:[31m[1mWARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.[0m
+ * Running on all addresses (0.0.0.0)
+ * Running on http://127.0.0.1:10000
+ * Running on http://10.56.235.105:10000
+INFO:werkzeug:[33mPress CTRL+C to quit[0m
+INFO:__main__:Loading video model from: /home/imtiyaz/Desktop/dfd-final/ImageVideoDFD/models/df_92_v2.h5
+INFO:__main__:Video Keras model loaded successfully with tf-keras!
+ERROR:__main__:Error in Xception image prediction: cannot identify image file '/home/imtiyaz/Desktop/dfd-final/ImageVideoDFD/Uploaded_Files/test_upload.jpg'
+Traceback (most recent call last):
+  File "/home/imtiyaz/Desktop/dfd-final/ImageVideoDFD/server.py", line 1085, in predict_image_xception
+    img = Image.open(image_path).convert("RGB")
+  File "/home/imtiyaz/Desktop/dfd-final/ImageVideoDFD/venv/lib/python3.10/site-packages/PIL/Image.py", line 3579, in open
+    raise UnidentifiedImageError(msg)
+PIL.UnidentifiedImageError: cannot identify image file '/home/imtiyaz/Desktop/dfd-final/ImageVideoDFD/Uploaded_Files/test_upload.jpg'
+INFO:werkzeug:127.0.0.1 - - [19/Feb/2026 16:53:38] "POST /image-detect HTTP/1.1" 200 -
+INFO:__main__:Detect route called with method: GET
+INFO:__main__:Rendering detect.html template
+INFO:werkzeug:127.0.0.1 - - [19/Feb/2026 16:53:41] "GET /detect HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [19/Feb/2026 16:53:41] "[36mGET /static/index.css HTTP/1.1[0m" 304 -
+INFO:__main__:Detect route called with method: POST
+INFO:__main__:Processing video upload
+INFO:__main__:Video file received: WhatsApp Video 2026-02-03 at 10.55.34 PM (1).mp4
+INFO:__main__:Video file size: 4590161 bytes
+INFO:__main__:Processing video: WhatsApp_Video_2026-02-03_at_10.55.34_PM_1.mp4 (size: 4590161 bytes)
+INFO:__main__:Starting video analysis with Xception (.h5) model...
+INFO:__main__:Starting Xception video analysis for: /home/imtiyaz/Desktop/dfd-final/ImageVideoDFD/Uploaded_Files/WhatsApp_Video_2026-02-03_at_10.55.34_PM_1.mp4
+INFO:__main__:Extracted 50 frames from video (total: 583)
+INFO:__main__:Running inference on 47 frames
+INFO:__main__:Analysis completed. Prediction: [0, 88.31331634521484, 'static/heatmaps/heatmap_66c0093558084bc19989350d4d58dbad.png', ['static/frames/frame_b39cab0c_00.jpg', 'static/frames/frame_b39cab0c_01.jpg', 'static/frames/frame_b39cab0c_02.jpg', 'static/frames/frame_b39cab0c_03.jpg', 'static/frames/frame_b39cab0c_04.jpg', 'static/frames/frame_b39cab0c_05.jpg', 'static/frames/frame_b39cab0c_06.jpg', 'static/frames/frame_b39cab0c_07.jpg', 'static/frames/frame_b39cab0c_08.jpg', 'static/frames/frame_b39cab0c_09.jpg', 'static/frames/frame_b39cab0c_10.jpg', 'static/frames/frame_b39cab0c_11.jpg', 'static/frames/frame_b39cab0c_12.jpg', 'static/frames/frame_b39cab0c_13.jpg', 'static/frames/frame_b39cab0c_14.jpg', 'static/frames/frame_b39cab0c_15.jpg', 'static/frames/frame_b39cab0c_16.jpg', 'static/frames/frame_b39cab0c_17.jpg', 'static/frames/frame_b39cab0c_18.jpg', 'static/frames/frame_b39cab0c_19.jpg', 'static/frames/frame_b39cab0c_20.jpg', 'static/frames/frame_b39cab0c_21.jpg', 'static/frames/frame_b39cab0c_22.jpg', 'static/frames/frame_b39cab0c_23.jpg', 'static/frames/frame_b39cab0c_24.jpg', 'static/frames/frame_b39cab0c_25.jpg', 'static/frames/frame_b39cab0c_26.jpg', 'static/frames/frame_b39cab0c_27.jpg', 'static/frames/frame_b39cab0c_28.jpg', 'static/frames/frame_b39cab0c_29.jpg', 'static/frames/frame_b39cab0c_30.jpg', 'static/frames/frame_b39cab0c_31.jpg', 'static/frames/frame_b39cab0c_32.jpg', 'static/frames/frame_b39cab0c_33.jpg', 'static/frames/frame_b39cab0c_34.jpg', 'static/frames/frame_b39cab0c_35.jpg', 'static/frames/frame_b39cab0c_36.jpg', 'static/frames/frame_b39cab0c_37.jpg', 'static/frames/frame_b39cab0c_38.jpg', 'static/frames/frame_b39cab0c_39.jpg', 'static/frames/frame_b39cab0c_40.jpg', 'static/frames/frame_b39cab0c_41.jpg', 'static/frames/frame_b39cab0c_42.jpg', 'static/frames/frame_b39cab0c_43.jpg', 'static/frames/frame_b39cab0c_44.jpg', 'static/frames/frame_b39cab0c_45.jpg', 'static/frames/frame_b39cab0c_46.jpg', 'static/frames/frame_b39cab0c_47.jpg', 'static/frames/frame_b39cab0c_48.jpg', 'static/frames/frame_b39cab0c_49.jpg']], Time: 13.175882816314697
+INFO:__main__:Video prediction: FAKE with confidence 88.31331634521484%
+INFO:__main__:Sending response data: {'output': 'FAKE', 'confidence': 88.31331634521484, 'processing_time': 13.18, 'heatmap_url': 'static/heatmaps/heatmap_66c0093558084bc19989350d4d58dbad.png', 'frames_analyzed': 50, 'frame_urls': ['static/frames/frame_b39cab0c_00.jpg', 'static/frames/frame_b39cab0c_01.jpg', 'static/frames/frame_b39cab0c_02.jpg', 'static/frames/frame_b39cab0c_03.jpg', 'static/frames/frame_b39cab0c_04.jpg', 'static/frames/frame_b39cab0c_05.jpg', 'static/frames/frame_b39cab0c_06.jpg', 'static/frames/frame_b39cab0c_07.jpg', 'static/frames/frame_b39cab0c_08.jpg', 'static/frames/frame_b39cab0c_09.jpg', 'static/frames/frame_b39cab0c_10.jpg', 'static/frames/frame_b39cab0c_11.jpg', 'static/frames/frame_b39cab0c_12.jpg', 'static/frames/frame_b39cab0c_13.jpg', 'static/frames/frame_b39cab0c_14.jpg', 'static/frames/frame_b39cab0c_15.jpg', 'static/frames/frame_b39cab0c_16.jpg', 'static/frames/frame_b39cab0c_17.jpg', 'static/frames/frame_b39cab0c_18.jpg', 'static/frames/frame_b39cab0c_19.jpg', 'static/frames/frame_b39cab0c_20.jpg', 'static/frames/frame_b39cab0c_21.jpg', 'static/frames/frame_b39cab0c_22.jpg', 'static/frames/frame_b39cab0c_23.jpg', 'static/frames/frame_b39cab0c_24.jpg', 'static/frames/frame_b39cab0c_25.jpg', 'static/frames/frame_b39cab0c_26.jpg', 'static/frames/frame_b39cab0c_27.jpg', 'static/frames/frame_b39cab0c_28.jpg', 'static/frames/frame_b39cab0c_29.jpg', 'static/frames/frame_b39cab0c_30.jpg', 'static/frames/frame_b39cab0c_31.jpg', 'static/frames/frame_b39cab0c_32.jpg', 'static/frames/frame_b39cab0c_33.jpg', 'static/frames/frame_b39cab0c_34.jpg', 'static/frames/frame_b39cab0c_35.jpg', 'static/frames/frame_b39cab0c_36.jpg', 'static/frames/frame_b39cab0c_37.jpg', 'static/frames/frame_b39cab0c_38.jpg', 'static/frames/frame_b39cab0c_39.jpg', 'static/frames/frame_b39cab0c_40.jpg', 'static/frames/frame_b39cab0c_41.jpg', 'static/frames/frame_b39cab0c_42.jpg', 'static/frames/frame_b39cab0c_43.jpg', 'static/frames/frame_b39cab0c_44.jpg', 'static/frames/frame_b39cab0c_45.jpg', 'static/frames/frame_b39cab0c_46.jpg', 'static/frames/frame_b39cab0c_47.jpg', 'static/frames/frame_b39cab0c_48.jpg', 'static/frames/frame_b39cab0c_49.jpg']}
+INFO:__main__:Data type: <class 'dict'>
+INFO:__main__:JSON data: {"confidence": 88.31331634521484, "frame_urls": ["static/frames/frame_b39cab0c_00.jpg", "static/frames/frame_b39cab0c_01.jpg", "static/frames/frame_b39cab0c_02.jpg", "static/frames/frame_b39cab0c_03.jpg", "static/frames/frame_b39cab0c_04.jpg", "static/frames/frame_b39cab0c_05.jpg", "static/frames/frame_b39cab0c_06.jpg", "static/frames/frame_b39cab0c_07.jpg", "static/frames/frame_b39cab0c_08.jpg", "static/frames/frame_b39cab0c_09.jpg", "static/frames/frame_b39cab0c_10.jpg", "static/frames/frame_b39cab0c_11.jpg", "static/frames/frame_b39cab0c_12.jpg", "static/frames/frame_b39cab0c_13.jpg", "static/frames/frame_b39cab0c_14.jpg", "static/frames/frame_b39cab0c_15.jpg", "static/frames/frame_b39cab0c_16.jpg", "static/frames/frame_b39cab0c_17.jpg", "static/frames/frame_b39cab0c_18.jpg", "static/frames/frame_b39cab0c_19.jpg", "static/frames/frame_b39cab0c_20.jpg", "static/frames/frame_b39cab0c_21.jpg", "static/frames/frame_b39cab0c_22.jpg", "static/frames/frame_b39cab0c_23.jpg", "static/frames/frame_b39cab0c_24.jpg", "static/frames/frame_b39cab0c_25.jpg", "static/frames/frame_b39cab0c_26.jpg", "static/frames/frame_b39cab0c_27.jpg", "static/frames/frame_b39cab0c_28.jpg", "static/frames/frame_b39cab0c_29.jpg", "static/frames/frame_b39cab0c_30.jpg", "static/frames/frame_b39cab0c_31.jpg", "static/frames/frame_b39cab0c_32.jpg", "static/frames/frame_b39cab0c_33.jpg", "static/frames/frame_b39cab0c_34.jpg", "static/frames/frame_b39cab0c_35.jpg", "static/frames/frame_b39cab0c_36.jpg", "static/frames/frame_b39cab0c_37.jpg", "static/frames/frame_b39cab0c_38.jpg", "static/frames/frame_b39cab0c_39.jpg", "static/frames/frame_b39cab0c_40.jpg", "static/frames/frame_b39cab0c_41.jpg", "static/frames/frame_b39cab0c_42.jpg", "static/frames/frame_b39cab0c_43.jpg", "static/frames/frame_b39cab0c_44.jpg", "static/frames/frame_b39cab0c_45.jpg", "static/frames/frame_b39cab0c_46.jpg", "static/frames/frame_b39cab0c_47.jpg", "static/frames/frame_b39cab0c_48.jpg", "static/frames/frame_b39cab0c_49.jpg"], "frames_analyzed": 50, "heatmap_url": "static/heatmaps/heatmap_66c0093558084bc19989350d4d58dbad.png", "output": "FAKE", "processing_time": 13.18}
+INFO:__main__:About to render template with data
+INFO:__main__:Template rendered successfully
+INFO:werkzeug:127.0.0.1 - - [19/Feb/2026 16:54:16] "POST /detect HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [19/Feb/2026 16:54:16] "[36mGET /static/index.css HTTP/1.1[0m" 304 -
+INFO:werkzeug:127.0.0.1 - - [19/Feb/2026 16:54:16] "GET /static/heatmaps/heatmap_66c0093558084bc19989350d4d58dbad.png?t=1771500256696 HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [19/Feb/2026 16:54:22] "GET /static/frames/frame_b39cab0c_03.jpg?t=1771500256696 HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [19/Feb/2026 16:54:22] "GET /static/frames/frame_b39cab0c_04.jpg?t=1771500256697 HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [19/Feb/2026 16:54:22] "GET /static/frames/frame_b39cab0c_00.jpg?t=1771500256696 HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [19/Feb/2026 16:54:22] "GET /static/frames/frame_b39cab0c_02.jpg?t=1771500256696 HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [19/Feb/2026 16:54:22] "GET /static/frames/frame_b39cab0c_01.jpg?t=1771500256696 HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [19/Feb/2026 16:54:22] "GET /static/frames/frame_b39cab0c_06.jpg?t=1771500256697 HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [19/Feb/2026 16:54:22] "GET /static/frames/frame_b39cab0c_07.jpg?t=1771500256697 HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [19/Feb/2026 16:54:22] "GET /static/frames/frame_b39cab0c_05.jpg?t=1771500256697 HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [19/Feb/2026 16:54:22] "GET /static/frames/frame_b39cab0c_08.jpg?t=1771500256697 HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [19/Feb/2026 16:54:22] "GET /static/frames/frame_b39cab0c_09.jpg?t=1771500256697 HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [19/Feb/2026 16:54:23] "GET /static/frames/frame_b39cab0c_10.jpg?t=1771500256697 HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [19/Feb/2026 16:54:23] "GET /static/frames/frame_b39cab0c_12.jpg?t=1771500256697 HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [19/Feb/2026 16:54:23] "GET /static/frames/frame_b39cab0c_13.jpg?t=1771500256697 HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [19/Feb/2026 16:54:23] "GET /static/frames/frame_b39cab0c_11.jpg?t=1771500256697 HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [19/Feb/2026 16:54:23] "GET /static/frames/frame_b39cab0c_14.jpg?t=1771500256697 HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [19/Feb/2026 16:54:23] "GET /static/frames/frame_b39cab0c_17.jpg?t=1771500256697 HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [19/Feb/2026 16:54:23] "GET /static/frames/frame_b39cab0c_19.jpg?t=1771500256698 HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [19/Feb/2026 16:54:23] "GET /static/frames/frame_b39cab0c_18.jpg?t=1771500256698 HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [19/Feb/2026 16:54:23] "GET /static/frames/frame_b39cab0c_15.jpg?t=1771500256697 HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [19/Feb/2026 16:54:23] "GET /static/frames/frame_b39cab0c_16.jpg?t=1771500256697 HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [19/Feb/2026 16:54:23] "GET /static/frames/frame_b39cab0c_24.jpg?t=1771500256698 HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [19/Feb/2026 16:54:23] "GET /static/frames/frame_b39cab0c_21.jpg?t=1771500256698 HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [19/Feb/2026 16:54:23] "GET /static/frames/frame_b39cab0c_20.jpg?t=1771500256698 HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [19/Feb/2026 16:54:23] "GET /static/frames/frame_b39cab0c_23.jpg?t=1771500256698 HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [19/Feb/2026 16:54:23] "GET /static/frames/frame_b39cab0c_22.jpg?t=1771500256698 HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [19/Feb/2026 16:54:23] "GET /static/frames/frame_b39cab0c_27.jpg?t=1771500256698 HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [19/Feb/2026 16:54:23] "GET /static/frames/frame_b39cab0c_28.jpg?t=1771500256698 HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [19/Feb/2026 16:54:23] "GET /static/frames/frame_b39cab0c_25.jpg?t=1771500256698 HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [19/Feb/2026 16:54:24] "GET /static/frames/frame_b39cab0c_26.jpg?t=1771500256698 HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [19/Feb/2026 16:54:24] "GET /static/frames/frame_b39cab0c_29.jpg?t=1771500256698 HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [19/Feb/2026 16:54:24] "GET /static/frames/frame_b39cab0c_32.jpg?t=1771500256698 HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [19/Feb/2026 16:54:24] "GET /static/frames/frame_b39cab0c_33.jpg?t=1771500256698 HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [19/Feb/2026 16:54:24] "GET /static/frames/frame_b39cab0c_31.jpg?t=1771500256698 HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [19/Feb/2026 16:54:24] "GET /static/frames/frame_b39cab0c_30.jpg?t=1771500256698 HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [19/Feb/2026 16:54:24] "GET /static/frames/frame_b39cab0c_34.jpg?t=1771500256698 HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [19/Feb/2026 16:54:24] "GET /static/frames/frame_b39cab0c_35.jpg?t=1771500256699 HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [19/Feb/2026 16:54:24] "GET /static/frames/frame_b39cab0c_37.jpg?t=1771500256699 HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [19/Feb/2026 16:54:24] "GET /static/frames/frame_b39cab0c_39.jpg?t=1771500256699 HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [19/Feb/2026 16:54:24] "GET /static/frames/frame_b39cab0c_36.jpg?t=1771500256699 HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [19/Feb/2026 16:54:24] "GET /static/frames/frame_b39cab0c_38.jpg?t=1771500256699 HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [19/Feb/2026 16:54:25] "GET /static/frames/frame_b39cab0c_41.jpg?t=1771500256699 HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [19/Feb/2026 16:54:25] "GET /static/frames/frame_b39cab0c_40.jpg?t=1771500256699 HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [19/Feb/2026 16:54:25] "GET /static/frames/frame_b39cab0c_43.jpg?t=1771500256699 HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [19/Feb/2026 16:54:25] "GET /static/frames/frame_b39cab0c_44.jpg?t=1771500256699 HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [19/Feb/2026 16:54:25] "GET /static/frames/frame_b39cab0c_42.jpg?t=1771500256699 HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [19/Feb/2026 16:54:25] "GET /static/frames/frame_b39cab0c_48.jpg?t=1771500256699 HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [19/Feb/2026 16:54:25] "GET /static/frames/frame_b39cab0c_46.jpg?t=1771500256699 HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [19/Feb/2026 16:54:25] "GET /static/frames/frame_b39cab0c_49.jpg?t=1771500256699 HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [19/Feb/2026 16:54:25] "GET /static/frames/frame_b39cab0c_47.jpg?t=1771500256699 HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [19/Feb/2026 16:54:25] "GET /static/frames/frame_b39cab0c_45.jpg?t=1771500256699 HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [19/Feb/2026 16:54:34] "GET /image-detect HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [19/Feb/2026 16:54:45] "POST /image-detect HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [19/Feb/2026 16:54:49] "POST /image-detect HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [19/Feb/2026 16:54:54] "POST /image-detect HTTP/1.1" 200 -
+INFO:__main__:Detect route called with method: GET
+INFO:__main__:Rendering detect.html template
+INFO:werkzeug:127.0.0.1 - - [19/Feb/2026 16:54:56] "GET /detect HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [19/Feb/2026 16:54:56] "[36mGET /static/index.css HTTP/1.1[0m" 304 -
+INFO:werkzeug:127.0.0.1 - - [19/Feb/2026 16:54:57] "GET /image-detect HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [19/Feb/2026 16:55:11] "POST /image-detect HTTP/1.1" 200 -
